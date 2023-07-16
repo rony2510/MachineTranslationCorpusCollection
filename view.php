@@ -17,7 +17,15 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+}
+</style>
 <style>
 
 </style>
@@ -26,6 +34,39 @@
   <body>
     <h1><p style="text-align:center;"><b>kothaRao</b>:Machine Translation</p></h1>
 
+
+
+
+<!-- count rows -->
+<div class="container">
+
+
+    <?php
+
+     $servername="localhost";
+     $username="root";
+     $password="";
+     $dbname="kotharao";
+
+     $conn=mysqli_connect($servername,$username,$password,$dbname);
+     $sql="SELECT * from corpus";
+
+
+      if ($result = mysqli_query($conn, $sql)) {
+
+          // Return the number of rows in result set
+          $rowcount = mysqli_num_rows( $result );
+
+          // Display result
+          printf("Total rows in this table :  %d\n", $rowcount);
+
+       }
+
+
+
+    ?>
+
+</div>
 
 
 
@@ -56,7 +97,7 @@
        $hajong=$row["hajong"];
 
 
-       echo "<tr><td>" . "</td><td>" . $row["bangla"] . "</td><td>" . $row["hajong"] . "</td></tr>";
+       echo "<tr><td>" . $row["bangla"] . "</td><td>" . $row["hajong"] . "</td></tr>";
 
      }
      echo "</table>";
